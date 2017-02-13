@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<rediFieldMap>
+    {% for component in components %}
+    <clinicalComponent>
+        <loinc>{{ component.loinc }}</loinc>
+        <clinicalComponentName>{{ component.name }}</clinicalComponentName>
+        <redcapFormName>{{ component.form_name }}</redcapFormName>
+        <redcapFieldNameValue>{{ component.field_name_value }}</redcapFieldNameValue>
+        <redcapFieldNameUnits>{{ component.field_name_units }}</redcapFieldNameUnits>
+    </clinicalComponent>
+    {% endfor %}
+</rediFieldMap>

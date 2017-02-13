@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<redcapProject>
+  <name>Project</name>
+  {% for key, form in forms.iteritems() %}
+  <form>
+      <name>{{ form.name }}</name>
+      <formDateField>{{ form.form_data_field }}</formDateField>
+      <formCompletedFieldName>{{ form.form_completed_field_name }}</formCompletedFieldName>
+      <formCompletedFieldValue>{{ form.form_completed_field_value }}</formCompletedFieldValue>
+      <formImportedFieldName>{{ form.imported_field_name }}</formImportedFieldName>
+      <formImportedFieldValue>{{ form.imported_field_value }}</formImportedFieldValue>
+      {% for event in form.events %}
+      <event>
+          <name>{{ event.unique_event_name }}</name>
+      </event>
+      {% endfor %}
+  </form>
+  {% endfor %}
+</redcapProject>
