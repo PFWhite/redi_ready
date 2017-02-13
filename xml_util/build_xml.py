@@ -20,11 +20,10 @@ def form_events_render(event_map):
         else:
             forms[form_name] = {
                 'name': form_name,
-                'form_data_field': '!!!UNKNOWN!!!',
-                'form_completed_field_name': '!!!UNKNOWN!!!',
-                'form_completed_field_value': '!!!UNKNOWN!!!',
-                'form_imported_field_name': '!!!UNKNOWN!!!',
-                'form_imported_field_value': '!!!UNKNOWN!!!',
+                'form_data_field': 'UNKNOWN',
+                'form_completed_field_name': form_name + '_complete',
+                'form_imported_field_name': 'UNKNOWN',
+                'form_imported_field_value': 'UNKNOWN',
                 'events': []
             }
         forms[form_name]['events'].append({'unique_event_name': item['unique_event_name']})
