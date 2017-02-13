@@ -2,11 +2,11 @@
 <rediFieldMap>
     {% for component in components %}
     <clinicalComponent>
-        <loinc>{{ component.loinc }}</loinc>
-        <clinicalComponentName>{{ component.name }}</clinicalComponentName>
-        <redcapFormName>{{ component.form_name }}</redcapFormName>
-        <redcapFieldNameValue>{{ component.field_name_value }}</redcapFieldNameValue>
-        <redcapFieldNameUnits>{{ component.field_name_units }}</redcapFieldNameUnits>
+        <loinc>{{ component.l }}</loinc>
+        <clinicalComponentName>{{ component.c }}</clinicalComponentName>
+        <redcapFormName>{{ component.f }}</redcapFormName>
+        <redcapFieldNameValue>{{ component.v }}</redcapFieldNameValue>
+        <redcapFieldNameUnits>{{ component.u }}</redcapFieldNameUnits>
     </clinicalComponent>
     {% endfor %}
 </rediFieldMap>

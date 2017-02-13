@@ -1,4 +1,5 @@
 from jinja2 import Template
+import yaml
 
 template_paths = {
     'form_events': './xml_util/templates/formEvents.html',
@@ -31,4 +32,8 @@ def form_events_render(event_map):
     return templates['form_events'].render(forms=forms)
 
 
+def translation_table_render(yaml_path):
+    yaml_file = open(yaml_path, 'r')
+    data = yaml.load(yaml_file.read())
+    return templates['translation_table'].render(components=data['components'])
 

@@ -38,6 +38,9 @@ def main(argv):
     with open('/'.join([config.outfile_dir, 'test', 'formEvents.xml']), 'w') as form_events_file:
         form_events_file.write(xml_util.form_events_render(data))
 
+    with open('/'.join([config.outfile_dir, 'test', 'translationTable.xml']), 'w') as trans_file:
+        trans_file.write(xml_util.translation_table_render('./xml_util/translation.yaml'))
+
 
 
 if __name__ == "__main__":

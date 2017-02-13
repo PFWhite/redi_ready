@@ -1,0 +1,18 @@
+schema:
+  l: loinc_code
+  c: clinicalComponentName
+  f: redcapFormName
+  v: redcapFieldNameValue
+  u: redcapFieldNameUnits
+
+components:
+  - l: 2647-7
+    c: Lymphocytes
+    f: cbc_imported
+    v: lym_im_lborres
+    u: lym_im_lborresu
+  - l: 12412
+    c: Test
+    f: nothing
+    v: testest
+    u: unittest

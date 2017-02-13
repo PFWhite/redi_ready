@@ -24,6 +24,9 @@ pytest-cov==1.8.1
 pytz==2015.4
 redcap-cli==0.1.0
 requests==2.13.0
+ruamel.ordereddict==0.4.9
+ruamel.yaml==0.13.14
 semantic-version==2.3.1
 SQLAlchemy==1.0.0
+typing==3.5.3.0
 virtualenv==15.0.1
