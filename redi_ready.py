@@ -63,10 +63,13 @@ def main(argv):
         write_project_config(api, project_name)
         write_form_events(api, project_name)
         write_translation_table('translation.yaml', project_name)
+<<<<<<< HEAD
+=======
 
 
 
 
+>>>>>>> 1893627... trying to get redcap to take the metadata
 
 if __name__ == "__main__":
     main(sys.argv)

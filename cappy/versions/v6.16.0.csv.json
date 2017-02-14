@@ -1,0 +1,46 @@
+{
+  "export_project_info": {
+    "token": "",
+    "content": "project",
+    "format": "csv",
+    "return_format": "csv"
+  },
+  "export_instruments": {
+    "token": "",
+    "content": "instrument",
+    "format": "csv",
+    "return_format": "csv"
+  },
+  "export_arms": {
+    "token": "",
+    "content": "arm",
+    "format": "csv",
+    "return_format": "csv"
+  },
+  "export_events": {
+    "token": "",
+    "content": "event",
+    "format": "csv",
+    "return_format": "csv"
+  },
+  "export_metadata": {
+    "token": "",
+    "content": "metadata",
+    "format": "csv",
+    "return_format": "csv",
+    "fields": true,
+    "forms": true
+  },
+  "export_list_of_export_field_names": {
+    "token": "",
+    "content": "exportFieldNames",
+    "format": "csv",
+    "return_format": "csv"
+  },
+  "export_instrument_event_mapping": {
+    "token": "",
+    "content": "formEventMapping",
+    "format": "csv",
+    "return_format": "csv"
+  }
+}
