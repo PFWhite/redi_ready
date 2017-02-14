@@ -3,6 +3,8 @@ import copy
 
 import requests as req
 
+import cappy.utils as utils
+
 class API(object):
 
     def _add_iterable(self, iterable, name, post_body):
@@ -29,7 +31,8 @@ class API(object):
             return req.post(endpoint, body)
         return run_call
 
-    def __init__(self, token, endpoint, version_path):
+    def __init__(self, token, endpoint, version_file):
+        version_path = utils.path_for_version(version_file)
         with open(version_path, 'r') as api_def:
             self.api_definition = json.loads(api_def.read())
         for key in self.api_definition:

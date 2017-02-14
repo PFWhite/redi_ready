@@ -5,6 +5,7 @@ import json
 from cappy import API, beautify_json
 import xml_util
 import config
+import os
 
 def save_response(project_dir, filename, content):
     path = '/'.join([config.outfile_dir, project_dir, filename])
@@ -29,17 +30,24 @@ def write_project_config(api, project_dir):
 
 def main(argv):
     api = API(config.token, config.endpoint, config.versions[0])
-    write_project_config(api, 'test')
+    project_name = argv[1]
+    if project_name:
+        try:
+            os.mkdir(os.path.join(config.outfile_dir, project_name))
+        except:
+            pass
 
-    path = '/'.join([config.outfile_dir, 'test', 'event_map.json'])
-    with open(path, 'r') as event_map:
-        data = json.loads(event_map.read())
+        write_project_config(api, project_name)
 
-    with open('/'.join([config.outfile_dir, 'test', 'formEvents.xml']), 'w') as form_events_file:
-        form_events_file.write(xml_util.form_events_render(data))
+        path = os.path.join(config.outfile_dir, project_name, 'event_map.json')
+        with open(path, 'r') as event_map:
+            data = json.loads(event_map.read())
 
-    with open('/'.join([config.outfile_dir, 'test', 'translationTable.xml']), 'w') as trans_file:
-        trans_file.write(xml_util.translation_table_render('./xml_util/translation.yaml'))
+        with open(os.path.join(config.outfile_dir, project_name, 'formEvents.xml'), 'w') as form_events_file:
+            form_events_file.write(xml_util.form_events_render(data))
+
+        with open(os.path.join(config.outfile_dir, project_name, 'translationTable.xml'), 'w') as trans_file:
+            trans_file.write(xml_util.translation_table_render('./xml_util/translation.yaml'))
 
 
 
