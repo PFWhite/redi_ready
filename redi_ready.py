@@ -10,7 +10,7 @@ import os
 def save_response(project_dir, filename, content):
     path = os.path.join(config.outfile_dir, project_dir, filename)
     with open(path, 'w') as outfile:
-        outfile.write(beautify_json(content, False))
+        outfile.write(beautify_json(content))
 
 def write_project_config(api, project_name):
     project_dir = project_name
@@ -52,6 +52,7 @@ def write_translation_table(yaml_filename, project_name):
 
 
 def main(argv):
+    os.path.split(__file__)
     api = API(config.token, config.endpoint, config.versions[0])
     project_name = argv[1]
     if project_name:
@@ -63,13 +64,6 @@ def main(argv):
         write_project_config(api, project_name)
         write_form_events(api, project_name)
         write_translation_table('translation.yaml', project_name)
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 1893627... trying to get redcap to take the metadata
 
 if __name__ == "__main__":
     main(sys.argv)
