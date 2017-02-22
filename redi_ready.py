@@ -10,14 +10,14 @@ import os
 def save_response(project_dir, filename, content):
     path = os.path.join(config.outfile_dir, project_dir, filename)
     with open(path, 'w') as outfile:
-        outfile.write(beautify_json(content))
+        outfile.write(content)
 
-def write_project_config(api, project_name):
+def write_project_config(api, project_name, filetype):
     project_dir = project_name
-    save_response(project_dir, 'event.json', api.export_events().content)
-    save_response(project_dir, 'instruments.json', api.export_instruments().content)
-    save_response(project_dir, 'event_map.json', api.export_instrument_event_mapping().content)
-    save_response(project_dir, 'metadata.json', api.export_metadata().content)
+    save_response(project_dir, 'event.{}'.format(filetype), api.export_events().content)
+    save_response(project_dir, 'instruments.{}'.format(filetype), api.export_instruments().content)
+    save_response(project_dir, 'event_map.{}'.format(filetype), api.export_instrument_event_mapping().content)
+    save_response(project_dir, 'metadata.{}'.format(filetype), api.export_metadata().content)
     save_response(project_dir, 'project.info', api.export_project_info().content)
 
     path = os.path.join(config.outfile_dir, project_dir, 'admin_user.token')
@@ -29,10 +29,9 @@ def write_project_config(api, project_name):
         file.write('IMPORT_CONTENT_TYPE=json')
 
     path = os.path.join(config.outfile_dir, project_dir, 'project.config')
-    with open(path, 'w') as file: 
+    with open(path, 'w') as file:
         file.write("""project_title,purpose,is_longitudinal
-"{}",{},{}
-        """.format(project_name, 0, 1))
+"{}",{},{}""".format(project_name, 0, 1))
 
 def write_form_events(api, project_name):
     event_map_path = os.path.join(config.outfile_dir, project_name, 'event_map.json')
@@ -52,8 +51,7 @@ def write_translation_table(yaml_filename, project_name):
 
 
 def main(argv):
-    os.path.split(__file__)
-    api = API(config.token, config.endpoint, config.versions[0])
+    api = API(config.token, config.endpoint, config.versions[1])
     project_name = argv[1]
     if project_name:
         try:
@@ -61,7 +59,7 @@ def main(argv):
         except:
             pass
 
-        write_project_config(api, project_name)
+        write_project_config(api, project_name, 'json')
         write_form_events(api, project_name)
         write_translation_table('translation.yaml', project_name)
 
