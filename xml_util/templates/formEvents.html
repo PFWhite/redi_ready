@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <redcapProject>
   <name>Project</name>
-  {% for key, form in forms.iteritems() %}
+  {% for key, form in forms.items() %}
   <form>
       <name>{{ form.name }}</name>
       <formDateField>{{ form.form_data_field }}</formDateField>

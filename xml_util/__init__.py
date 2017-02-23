@@ -1,1 +1,1 @@
-from build_xml import *
+from .build_xml import *

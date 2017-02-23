@@ -7,33 +7,41 @@ import xml_util
 import config
 import os
 
-def save_response(project_dir, filename, content):
+def save_response(project_dir, filename, content, filetype):
     path = os.path.join(config.outfile_dir, project_dir, filename)
     with open(path, 'w') as outfile:
-        outfile.write(content)
+        if filetype == 'json':
+            outfile.write(beautify_json(content))
+        else:
+            outfile.write(str(content, 'utf-8'))
 
 def write_project_config(api, project_name, filetype):
+    """
+    This function writes all the files we need for our current vagrant spin up process with
+    redcap projects
+    """
     project_dir = project_name
-    save_response(project_dir, 'event.{}'.format(filetype), api.export_events().content)
-    save_response(project_dir, 'instruments.{}'.format(filetype), api.export_instruments().content)
-    save_response(project_dir, 'event_map.{}'.format(filetype), api.export_instrument_event_mapping().content)
-    save_response(project_dir, 'metadata.{}'.format(filetype), api.export_metadata().content)
-    save_response(project_dir, 'project.info', api.export_project_info().content)
+    save_response(project_dir, 'event.{}'.format(filetype), api.export_events().content, filetype)
+    save_response(project_dir, 'instruments.{}'.format(filetype), api.export_instruments().content, filetype)
+    save_response(project_dir, 'event_map.{}'.format(filetype), api.export_instrument_event_mapping().content, filetype)
+    save_response(project_dir, 'metadata.{}'.format(filetype), api.export_metadata().content, filetype)
+    save_response(project_dir, 'records.{}'.format(filetype), api.export_records().content, filetype)
+    save_response(project_dir, 'project.info', api.export_project_info().content, filetype)
 
-    path = os.path.join(config.outfile_dir, project_dir, 'admin_user.token')
-    with open(path, 'w') as file:
-        file.write(config.token)
+    # path = os.path.join(config.outfile_dir, project_dir, 'admin_user.token')
+    # with open(path, 'w') as file:
+    #     file.write(config.token)
 
-    path = os.path.join(config.outfile_dir, project_dir, 'settings.ini')
-    with open(path, 'w') as file:
-        file.write('IMPORT_CONTENT_TYPE=json')
+    with open(config.get_settings_ini_path(project_dir), 'w') as file:
+        file.write(config.settings_ini_string.format(filetype))
 
-    path = os.path.join(config.outfile_dir, project_dir, 'project.config')
-    with open(path, 'w') as file:
-        file.write("""project_title,purpose,is_longitudinal
-"{}",{},{}""".format(project_name, 0, 1))
+    with open(config.get_project_config_path(project_dir), 'w') as file:
+        file.write(config.project_config_string.format(project_name, 0, 1))
 
 def write_form_events(api, project_name):
+    """
+    This writes most of the form events file from the event map and templates
+    """
     event_map_path = os.path.join(config.outfile_dir, project_name, 'event_map.json')
     with open(event_map_path, 'r') as event_map:
         data = json.loads(event_map.read())
@@ -43,6 +51,9 @@ def write_form_events(api, project_name):
         form_events_file.write(xml_util.form_events_render(data))
 
 def write_translation_table(yaml_filename, project_name):
+    """
+    Writes the translation table xml by using a yaml file and a template
+    """
     yaml_path_in = os.path.join(config.infile_dir, yaml_filename)
     xml_filename = yaml_filename.replace('.yaml', '.xml')
     yaml_path_out = os.path.join(config.outfile_dir, project_name, xml_filename)
@@ -51,7 +62,9 @@ def write_translation_table(yaml_filename, project_name):
 
 
 def main(argv):
-    api = API(config.token, config.endpoint, config.versions[1])
+    filetype = argv[2]
+    index = 1 if filetype == 'json' else 0
+    api = API(config.token, config.endpoint, config.versions[index])
     project_name = argv[1]
     if project_name:
         try:
@@ -59,9 +72,9 @@ def main(argv):
         except:
             pass
 
-        write_project_config(api, project_name, 'json')
+        write_project_config(api, project_name, filetype)
         write_form_events(api, project_name)
-        write_translation_table('translation.yaml', project_name)
+        # write_translation_table('translation.yaml', project_name)
 
 if __name__ == "__main__":
     main(sys.argv)
