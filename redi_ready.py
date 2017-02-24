@@ -7,32 +7,28 @@ import xml_util
 import config
 import os
 
-def save_response(project_dir, filename, content, filetype):
+def save_response(project_dir, response):
+    filename = "{}.{}".format(response.cappy_data['call_name'], response.cappy_data['file_format'])
     path = os.path.join(config.outfile_dir, project_dir, filename)
     print("Writing {} for {}".format(filename, project_dir))
     with open(path, 'w') as outfile:
-        if filetype == 'json':
-            outfile.write(beautify_json(content))
-        else:
-            outfile.write(str(content, 'utf-8'))
+        outfile.write(str(response.content, 'utf-8'))
 
-def write_project_config(api, project_name, filetype):
+def write_project_config(api, project_name):
     """
     This function writes all the files we need for our current vagrant spin up process with
     redcap projects
     """
-    project_dir = project_name
-    save_response(project_dir, 'event.{}'.format(filetype), api.export_events().content, filetype)
-    save_response(project_dir, 'arm.{}'.format(filetype), api.export_arms().content, filetype)
-    save_response(project_dir, 'instruments.{}'.format(filetype), api.export_instruments().content, filetype)
-    save_response(project_dir, 'event_map.{}'.format(filetype), api.export_instrument_event_mapping().content, filetype)
-    save_response(project_dir, 'metadata.{}'.format(filetype), api.export_metadata().content, filetype)
-    save_response(project_dir, 'records.{}'.format(filetype), api.export_records().content, filetype)
-    save_response(project_dir, 'project.info', api.export_project_info().content, filetype)
+    save_response(project_name, api.export_project_info())
+    save_response(project_name, api.export_events())
+    save_response(project_name, api.export_arms())
+    save_response(project_name, api.export_instruments())
+    save_response(project_name, api.export_instrument_event_mapping())
+    save_response(project_name, api.export_instrument_event_mapping_json())
+    save_response(project_name, api.export_metadata())
+    save_response(project_name, api.export_records())
 
-    # path = os.path.join(config.outfile_dir, project_dir, 'admin_user.token')
-    # with open(path, 'w') as file:
-    #     file.write(config.token)
+    project_dir = project_name
 
     with open(config.get_settings_ini_path(project_dir), 'w') as file:
         file.write(config.settings_ini_string.format(filetype))
@@ -65,7 +61,7 @@ def write_translation_table(yaml_filename, project_name):
     with open(yaml_path_out, 'w') as yaml_file:
         yaml_file.write(xml_util.translation_table_render(yaml_path_in))
 
-def send_call(api, path, call):
+def send(api, path, call):
     with open(path, 'r') as in_file:
         data = in_file.read()
         print("=================")
@@ -73,49 +69,48 @@ def send_call(api, path, call):
         res = getattr(api, call)(data)
         if res.status_code != 200:
             print("Error: ", res.status_code, " With file at: ", path)
+            print("DATA:")
+            print(data)
         else:
             print("Success with file at: ", path)
         print("Content: ", res.content)
 
 def main(argv):
     project_name = argv[1]
-    filetype = argv[2]
-    index = {
-        'json': 1,
-        'csv': 0,
-        'xml': 2,
-    }[filetype]
+    index = 2 # the index of the cappy version file redi_ready uses
 
     if project_name and config.fetch_data:
-        api = API(config.token, config.endpoint, config.versions[index])
+        pull_api = API(config.source_project['token'],
+                  config.source_project['endpoint'],
+                  config.versions[index])
         try:
             os.mkdir(os.path.join(config.outfile_dir, project_name))
         except:
             pass
 
         print("Writing project configs for {}".format(project_name))
-        write_project_config(api, project_name, filetype)
-        write_form_events(api, project_name)
-        # write_translation_table('translation.yaml', project_name)
+        write_project_config(pull_api, project_name)
+        write_form_events(pull_api, project_name)
+        write_translation_table('translation.yaml', project_name)
 
     if config.target_project and config.push_data:
         print("Copying redcap info over to {}".format(config.target_project['endpoint']))
         token = config.target_project['token']
         endpoint = config.target_project["endpoint"]
-        send_api = API(token, endpoint, config.versions[index])
+        push_api = API(token, endpoint, config.versions[index])
         file_calls = [
             ('arm.{}'.format(filetype), 'import_arms'),
             ('event.{}'.format(filetype), 'import_events'),
             ('metadata.{}'.format(filetype), 'import_metadata'),
             ('event_map.{}'.format(filetype), 'import_instrument_event_mapping'),
-            ('records.{}'.format(filetype), 'import_records'),
+            ('records.json', 'import_records'),
         ]
         path = os.path.join(config.outfile_dir, project_name)
         path_calls = [(os.path.join(path, item[0]), item[1]) for item in file_calls]
         for item in path_calls:
             filename = item[0]
             call = item[1]
-            send_call(send_api, filename, call)
+            send(push_api, filename, call)
 
     print("=========DONE=========")
 
