@@ -1,19 +1,24 @@
 import os
 from cappy import get_version_files
 
-token = 'XXXXXXXXXXXXXXXXXXXXXXXXX'
-endpoint = 'https://dev.redcap.org/api/'
+source_project = {
+    'token': 'xxxxxxxxxxxxxxxxxxx',
+    'endpoint': 'https://source.redcap.org/api/'
+}
+
+target_project = {
+    'endpoint': 'http://target.recap.dev/redcap/api/',
+    'super_token': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+}
 
 versions = get_version_files()
+
+fetch_data = True
+# fetch_data = False
+
+push_data = True
+# push_data = False
 
 outfile_dir = os.path.join('.', 'data')
 infile_dir = os.path.join('.', 'data_in')
 
-def get_settings_ini_path(project_dir):
-    return os.path.join(outfile_dir, project_dir, 'settings.ini')
-settings_ini_string = 'IMPORT_CONTENT_TYPE={}'
-
-def get_project_config_path(project_dir):
-    return os.path.join(outfile_dir, project_dir, 'project.config')
-project_config_string = """project_title,purpose,is_longitudinal
-"{}",{},{}"""

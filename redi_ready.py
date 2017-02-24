@@ -56,6 +56,7 @@ def write_translation_table(yaml_filename, project_name):
         yaml_file.write(xml_util.translation_table_render(yaml_path_in))
 
 def send(api, path, call):
+    error = None
     with open(path, 'r') as in_file:
         data = in_file.read()
         print("=================")
@@ -65,9 +66,11 @@ def send(api, path, call):
             print("Error: ", res.status_code, " With file at: ", path)
             print("DATA:")
             print(data)
+            error = data
         else:
             print("Success with file at: ", path)
         print("Content: ", res.content)
+    return res, error
 
 def main(argv):
     project_name = argv[1]
@@ -75,25 +78,32 @@ def main(argv):
 
     if project_name and config.fetch_data:
         pull_api = API(config.source_project['token'],
-                  config.source_project['endpoint'],
-                  config.versions[index])
+                       config.source_project['endpoint'],
+                       config.versions[index])
         try:
             os.mkdir(os.path.join(config.outfile_dir, project_name))
         except:
             pass
 
-        print("Writing project configs for {}".format(project_name))
+        print("Writing project configs for {} from {}".format(project_name, config.source_project['endpoint']))
         write_project_config(pull_api, project_name)
         write_form_events(pull_api, project_name)
         write_translation_table('translation.yaml', project_name)
 
     if config.target_project and config.push_data:
-        print("Copying redcap info over to {}".format(config.target_project['endpoint']))
-        token = config.target_project['super_token']
+        print("Creating redcap project {} at {}".format(project_name, config.target_project['endpoint']))
+        super_token = config.target_project['super_token']
         endpoint = config.target_project["endpoint"]
+        super_api = API(super_token, endpoint, config.versions[index])
+
+        path = os.path.join(config.outfile_dir, project_name, 'project_info.csv')
+        create_project = (path, 'create_project')
+        res, error = send(super_api, create_project[0], create_project[1])
+        token = str(res.content, 'utf-8')
+
+        print("Copying project {} to {}".format(project_name, endpoint))
         push_api = API(token, endpoint, config.versions[index])
         file_calls = [
-            ('project_info.csv', 'create_project'),
             ('arms.csv', 'import_arms'),
             ('events.csv', 'import_events'),
             ('metadata.csv', 'import_metadata'),
@@ -105,7 +115,9 @@ def main(argv):
         for item in path_calls:
             filename = item[0]
             call = item[1]
-            send(push_api, filename, call)
+            res, error = send(push_api, filename, call)
+            if error:
+                break
 
     print("=========DONE=========")
 
