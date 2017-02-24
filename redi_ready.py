@@ -8,11 +8,13 @@ import config
 import os
 
 def save_response(project_dir, response):
-    filename = "{}.{}".format(response.cappy_data['call_name'], response.cappy_data['file_format'])
+    prefix = response.cappy_data['call_name'].replace('export_', '').replace('import_', '')
+    filename = "{}.{}".format(prefix, response.cappy_data['file_format'])
     path = os.path.join(config.outfile_dir, project_dir, filename)
     print("Writing {} for {}".format(filename, project_dir))
     with open(path, 'w') as outfile:
         outfile.write(str(response.content, 'utf-8'))
+    return filename
 
 def write_project_config(api, project_name):
     """
@@ -24,17 +26,9 @@ def write_project_config(api, project_name):
     save_response(project_name, api.export_arms())
     save_response(project_name, api.export_instruments())
     save_response(project_name, api.export_instrument_event_mapping())
-    save_response(project_name, api.export_instrument_event_mapping_json())
+    config.form_events_json = save_response(project_name, api.export_instrument_event_mapping_json())
     save_response(project_name, api.export_metadata())
     save_response(project_name, api.export_records())
-
-    project_dir = project_name
-
-    with open(config.get_settings_ini_path(project_dir), 'w') as file:
-        file.write(config.settings_ini_string.format(filetype))
-
-    with open(config.get_project_config_path(project_dir), 'w') as file:
-        file.write(config.project_config_string.format(project_name, 0, 1))
 
 def write_form_events(api, project_name):
     """
@@ -42,7 +36,7 @@ def write_form_events(api, project_name):
     """
     print("Writing form events from {}/event_map.json".format(project_name))
 
-    event_map_path = os.path.join(config.outfile_dir, project_name, 'event_map.json')
+    event_map_path = os.path.join(config.outfile_dir, project_name, config.form_events_json)
     with open(event_map_path, 'r') as event_map:
         data = json.loads(event_map.read())
 
@@ -54,7 +48,7 @@ def write_translation_table(yaml_filename, project_name):
     """
     Writes the translation table xml by using a yaml file and a template
     """
-    print("Writing translationTable.xml from data_in/{}".formay(yaml_filename))
+    print("Writing translationTable.xml from data_in/{}".format(yaml_filename))
     yaml_path_in = os.path.join(config.infile_dir, yaml_filename)
     xml_filename = yaml_filename.replace('.yaml', '.xml')
     yaml_path_out = os.path.join(config.outfile_dir, project_name, xml_filename)
@@ -95,14 +89,15 @@ def main(argv):
 
     if config.target_project and config.push_data:
         print("Copying redcap info over to {}".format(config.target_project['endpoint']))
-        token = config.target_project['token']
+        token = config.target_project['super_token']
         endpoint = config.target_project["endpoint"]
         push_api = API(token, endpoint, config.versions[index])
         file_calls = [
-            ('arm.{}'.format(filetype), 'import_arms'),
-            ('event.{}'.format(filetype), 'import_events'),
-            ('metadata.{}'.format(filetype), 'import_metadata'),
-            ('event_map.{}'.format(filetype), 'import_instrument_event_mapping'),
+            ('project_info.csv', 'create_project'),
+            ('arms.csv', 'import_arms'),
+            ('events.csv', 'import_events'),
+            ('metadata.csv', 'import_metadata'),
+            ('instrument_event_mapping.csv', 'import_instrument_event_mapping'),
             ('records.json', 'import_records'),
         ]
         path = os.path.join(config.outfile_dir, project_name)
