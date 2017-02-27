@@ -2,6 +2,13 @@
 <rediFieldMap>
     {% for component in components %}
     <clinicalComponent>
+        <!--
+           form: {{ component.f }}
+           value: "{{ component.field_label1 }}", fieldName: "{{ component.v }}"
+           unit: "{{ component.field_label2 }}", fieldName: "{{ component.u }}"
+           value field type: "{{ component.field_type1 }}"
+           unit field type: "{{ component.field_type1 }}"
+           -->
         <loinc>{{ component.l }}</loinc>
         <clinicalComponentName>{{ component.c }}</clinicalComponentName>
         <redcapFormName>{{ component.f }}</redcapFormName>

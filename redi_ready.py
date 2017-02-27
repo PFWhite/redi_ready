@@ -48,12 +48,13 @@ def write_translation_table(yaml_filename, project_name):
     """
     Writes the translation table xml by using a yaml file and a template
     """
-    print("Writing translationTable.xml from data_in/{}".format(yaml_filename))
-    yaml_path_in = os.path.join(config.infile_dir, yaml_filename)
-    xml_filename = yaml_filename.replace('.yaml', '.xml')
-    yaml_path_out = os.path.join(config.outfile_dir, project_name, xml_filename)
-    with open(yaml_path_out, 'w') as yaml_file:
-        yaml_file.write(xml_util.translation_table_render(yaml_path_in))
+    if yaml_filename:
+        print("Writing translationTable.xml from data_in/{}".format(yaml_filename))
+        yaml_path_in = os.path.join(config.infile_dir, yaml_filename)
+        xml_filename = 'translationTable.xml'
+        yaml_path_out = os.path.join(config.outfile_dir, project_name, xml_filename)
+        with open(yaml_path_out, 'w') as yaml_file:
+            yaml_file.write(xml_util.translation_table_render(yaml_path_in))
 
 def send(api, path, call):
     error = None
@@ -74,12 +75,13 @@ def send(api, path, call):
 
 def main(argv):
     project_name = argv[1]
+    yaml_filename = argv[2] if len(argv) == 3 else None
     index = 2 # the index of the cappy version file redi_ready uses
 
+    pull_api = API(config.source_project['token'],
+                    config.source_project['endpoint'],
+                    config.versions[index])
     if project_name and config.fetch_data:
-        pull_api = API(config.source_project['token'],
-                       config.source_project['endpoint'],
-                       config.versions[index])
         try:
             os.mkdir(os.path.join(config.outfile_dir, project_name))
         except:
@@ -87,8 +89,10 @@ def main(argv):
 
         print("Writing project configs for {} from {}".format(project_name, config.source_project['endpoint']))
         write_project_config(pull_api, project_name)
+
+    if project_name and config.build_redi_files:
         write_form_events(pull_api, project_name)
-        write_translation_table('translation.yaml', project_name)
+        write_translation_table(yaml_filename, project_name)
 
     if config.target_project and config.push_data:
         print("Creating redcap project {} at {}".format(project_name, config.target_project['endpoint']))
