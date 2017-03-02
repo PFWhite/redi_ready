@@ -1,0 +1,880 @@
+components:
+-   c: Date of test
+    f: cbc_imported
+    field_label1: Date of test
+    field_label2: Leukocytes
+    field_type1: text
+    field_type2: descriptive
+    l: UNKNOWN
+    u: wbc_im_lbtest
+    v: cbc_im_lbdtc
+-   c: Leukocytes
+    f: cbc_imported
+    field_label1: Leukocytes
+    field_label2: WBC
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: wbc_im_lbtestcd
+    v: wbc_im_lbtest
+-   c: WBC
+    f: cbc_imported
+    field_label1: WBC
+    field_label2: WBC
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: wbc_im_lborres
+    v: wbc_im_lbtestcd
+-   c: WBC
+    f: cbc_imported
+    field_label1: WBC
+    field_label2: WBC units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: wbc_im_lborresu
+    v: wbc_im_lborres
+-   c: WBC units
+    f: cbc_imported
+    field_label1: WBC units
+    field_label2: WBC done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: wbc_im_lbstat
+    v: wbc_im_lborresu
+-   c: WBC done?
+    f: cbc_imported
+    field_label1: WBC done?
+    field_label2: Neutrophils/Leukocytes
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: neut_im_lbtest
+    v: wbc_im_lbstat
+-   c: Neutrophils/Leukocytes
+    f: cbc_imported
+    field_label1: Neutrophils/Leukocytes
+    field_label2: NEUTLE
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: neut_im_lbtestcd
+    v: neut_im_lbtest
+-   c: NEUTLE
+    f: cbc_imported
+    field_label1: NEUTLE
+    field_label2: Neutrophils (%)
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: neut_im_lborres
+    v: neut_im_lbtestcd
+-   c: Neutrophils (%)
+    f: cbc_imported
+    field_label1: Neutrophils (%)
+    field_label2: Neutrophils (%) units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: neut_im_lborresu
+    v: neut_im_lborres
+-   c: Neutrophils (%) units
+    f: cbc_imported
+    field_label1: Neutrophils (%) units
+    field_label2: Neutrophils (%) done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: neut_im_lbstat
+    v: neut_im_lborresu
+-   c: Neutrophils (%) done?
+    f: cbc_imported
+    field_label1: Neutrophils (%) done?
+    field_label2: Absolute Neutrophil Count
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: anc_im_lbtest
+    v: neut_im_lbstat
+-   c: Absolute Neutrophil Count
+    f: cbc_imported
+    field_label1: Absolute Neutrophil Count
+    field_label2: NEUT
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: anc_im_lbtestcd
+    v: anc_im_lbtest
+-   c: NEUT
+    f: cbc_imported
+    field_label1: NEUT
+    field_label2: Neutrophils (absolute)
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: anc_im_lborres
+    v: anc_im_lbtestcd
+-   c: Neutrophils (absolute)
+    f: cbc_imported
+    field_label1: Neutrophils (absolute)
+    field_label2: Neutrophils (absolute) units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: anc_im_lborresu
+    v: anc_im_lborres
+-   c: Neutrophils (absolute) units
+    f: cbc_imported
+    field_label1: Neutrophils (absolute) units
+    field_label2: Neutrophils (absolute) done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: anc_im_lbstat
+    v: anc_im_lborresu
+-   c: Neutrophils (absolute) done?
+    f: cbc_imported
+    field_label1: Neutrophils (absolute) done?
+    field_label2: Lymphocytes/Total Cells
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: lymce_im_lbtest
+    v: anc_im_lbstat
+-   c: Lymphocytes/Total Cells
+    f: cbc_imported
+    field_label1: Lymphocytes/Total Cells
+    field_label2: LYMCE
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: lymce_im_lbtestcd
+    v: lymce_im_lbtest
+-   c: LYMCE
+    f: cbc_imported
+    field_label1: LYMCE
+    field_label2: Lymphocytes (%)
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: lymce_im_lborres
+    v: lymce_im_lbtestcd
+-   c: Lymphocytes (%)
+    f: cbc_imported
+    field_label1: Lymphocytes (%)
+    field_label2: Lymphocytes (%) units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: lymce_im_lborresu
+    v: lymce_im_lborres
+-   c: Lymphocytes (%) units
+    f: cbc_imported
+    field_label1: Lymphocytes (%) units
+    field_label2: Lymphocytes (%) done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: lymce_im_lbstat
+    v: lymce_im_lborresu
+-   c: Lymphocytes (%) done?
+    f: cbc_imported
+    field_label1: Lymphocytes (%) done?
+    field_label2: Lymphocytes
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: lym_im_lbtest
+    v: lymce_im_lbstat
+-   c: Lymphocytes
+    f: cbc_imported
+    field_label1: Lymphocytes
+    field_label2: LYM
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: lym_im_lbtestcd
+    v: lym_im_lbtest
+-   c: LYM
+    f: cbc_imported
+    field_label1: LYM
+    field_label2: Lymphocytes (absolute)
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: lym_im_lborres
+    v: lym_im_lbtestcd
+-   c: Lymphocytes (absolute)
+    f: cbc_imported
+    field_label1: Lymphocytes (absolute)
+    field_label2: Lymphocytes units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: lym_im_lborresu
+    v: lym_im_lborres
+-   c: Lymphocytes units
+    f: cbc_imported
+    field_label1: Lymphocytes units
+    field_label2: Lymphocytes done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: lym_im_lbstat
+    v: lym_im_lborresu
+-   c: Lymphocytes done?
+    f: cbc_imported
+    field_label1: Lymphocytes done?
+    field_label2: Platelets
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: plat_im_lbtest
+    v: lym_im_lbstat
+-   c: Platelets
+    f: cbc_imported
+    field_label1: Platelets
+    field_label2: PLAT
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: plat_im_lbtestcd
+    v: plat_im_lbtest
+-   c: PLAT
+    f: cbc_imported
+    field_label1: PLAT
+    field_label2: Platelet count
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: plat_im_lborres
+    v: plat_im_lbtestcd
+-   c: Platelet count
+    f: cbc_imported
+    field_label1: Platelet count
+    field_label2: Platelet units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: plat_im_lborresu
+    v: plat_im_lborres
+-   c: Platelet units
+    f: cbc_imported
+    field_label1: Platelet units
+    field_label2: Platelet count done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: plat_im_lbstat
+    v: plat_im_lborresu
+-   c: Platelet count done?
+    f: cbc_imported
+    field_label1: Platelet count done?
+    field_label2: Hemoglobin
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: hemo_im_lbtest
+    v: plat_im_lbstat
+-   c: Hemoglobin
+    f: cbc_imported
+    field_label1: Hemoglobin
+    field_label2: HGB
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: hemo_im_lbtestcd
+    v: hemo_im_lbtest
+-   c: HGB
+    f: cbc_imported
+    field_label1: HGB
+    field_label2: 'Hemoglobin '
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: hemo_im_lborres
+    v: hemo_im_lbtestcd
+-   c: 'Hemoglobin '
+    f: cbc_imported
+    field_label1: 'Hemoglobin '
+    field_label2: Hemoglobin units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: hemo_im_lborresu
+    v: hemo_im_lborres
+-   c: Hemoglobin units
+    f: cbc_imported
+    field_label1: Hemoglobin units
+    field_label2: Hemoglobin done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: hemo_im_lbstat
+    v: hemo_im_lborresu
+-   c: Hemoglobin done?
+    f: cbc_imported
+    field_label1: Hemoglobin done?
+    field_label2: WBC
+    field_type1: radio
+    field_type2: text
+    l: UNKNOWN
+    u: wbc_im_lbstresn
+    v: hemo_im_lbstat
+-   c: Date of test
+    f: chemistry_imported
+    field_label1: Date of test
+    field_label2: Alanine Aminotransferase
+    field_type1: text
+    field_type2: descriptive
+    l: UNKNOWN
+    u: alt_im_lbtest
+    v: chem_im_lbdtc
+-   c: Alanine Aminotransferase
+    f: chemistry_imported
+    field_label1: Alanine Aminotransferase
+    field_label2: ALT
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: alt_im_lbtestcd
+    v: alt_im_lbtest
+-   c: ALT
+    f: chemistry_imported
+    field_label1: ALT
+    field_label2: 'Serum ALT '
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: alt_im_lborres
+    v: alt_im_lbtestcd
+-   c: 'Serum ALT '
+    f: chemistry_imported
+    field_label1: 'Serum ALT '
+    field_label2: Serum ALT units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: alt_im_lborresu
+    v: alt_im_lborres
+-   c: Serum ALT units
+    f: chemistry_imported
+    field_label1: Serum ALT units
+    field_label2: Serum ALT done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: alt_im_lbstat
+    v: alt_im_lborresu
+-   c: Serum ALT done?
+    f: chemistry_imported
+    field_label1: Serum ALT done?
+    field_label2: Aspartate Aminotransferase
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: ast_im_lbtest
+    v: alt_im_lbstat
+-   c: Aspartate Aminotransferase
+    f: chemistry_imported
+    field_label1: Aspartate Aminotransferase
+    field_label2: AST
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: ast_im_lbtestcd
+    v: ast_im_lbtest
+-   c: AST
+    f: chemistry_imported
+    field_label1: AST
+    field_label2: 'Serum AST '
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: ast_im_lborres
+    v: ast_im_lbtestcd
+-   c: 'Serum AST '
+    f: chemistry_imported
+    field_label1: 'Serum AST '
+    field_label2: Serum AST units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: ast_im_lborresu
+    v: ast_im_lborres
+-   c: Serum AST units
+    f: chemistry_imported
+    field_label1: Serum AST units
+    field_label2: Serum AST done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: ast_im_lbstat
+    v: ast_im_lborresu
+-   c: Serum AST done?
+    f: chemistry_imported
+    field_label1: Serum AST done?
+    field_label2: Total Bilirubin
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: tbil_im_lbtest
+    v: ast_im_lbstat
+-   c: Total Bilirubin
+    f: chemistry_imported
+    field_label1: Total Bilirubin
+    field_label2: BILI
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: tbil_im_lbtestcd
+    v: tbil_im_lbtest
+-   c: BILI
+    f: chemistry_imported
+    field_label1: BILI
+    field_label2: Total Bilirubin
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: tbil_im_lborres
+    v: tbil_im_lbtestcd
+-   c: Total Bilirubin
+    f: chemistry_imported
+    field_label1: Total Bilirubin
+    field_label2: Total Bilirubin units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: tbil_im_lborresu
+    v: tbil_im_lborres
+-   c: Total Bilirubin units
+    f: chemistry_imported
+    field_label1: Total Bilirubin units
+    field_label2: Total Bilirubin done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: tbil_im_lbstat
+    v: tbil_im_lborresu
+-   c: Total Bilirubin done?
+    f: chemistry_imported
+    field_label1: Total Bilirubin done?
+    field_label2: Direct Bilirubin
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: dbil_im_lbtest
+    v: tbil_im_lbstat
+-   c: Direct Bilirubin
+    f: chemistry_imported
+    field_label1: Direct Bilirubin
+    field_label2: BILDIR
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: dbil_im_lbtestcd
+    v: dbil_im_lbtest
+-   c: BILDIR
+    f: chemistry_imported
+    field_label1: BILDIR
+    field_label2: Direct Bilirubin
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: dbil_im_lborres
+    v: dbil_im_lbtestcd
+-   c: Direct Bilirubin
+    f: chemistry_imported
+    field_label1: Direct Bilirubin
+    field_label2: Direct Bilirubin units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: dbil_im_lborresu
+    v: dbil_im_lborres
+-   c: Direct Bilirubin units
+    f: chemistry_imported
+    field_label1: Direct Bilirubin units
+    field_label2: Direct Bilirubin done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: dbil_im_lbstat
+    v: dbil_im_lborresu
+-   c: Direct Bilirubin done?
+    f: chemistry_imported
+    field_label1: Direct Bilirubin done?
+    field_label2: Albumin
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: alb_im_lbtest
+    v: dbil_im_lbstat
+-   c: Albumin
+    f: chemistry_imported
+    field_label1: Albumin
+    field_label2: ALB
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: alb_im_lbtestcd
+    v: alb_im_lbtest
+-   c: ALB
+    f: chemistry_imported
+    field_label1: ALB
+    field_label2: Albumin
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: alb_im_lborres
+    v: alb_im_lbtestcd
+-   c: Albumin
+    f: chemistry_imported
+    field_label1: Albumin
+    field_label2: Albumin units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: alb_im_lborresu
+    v: alb_im_lborres
+-   c: Albumin units
+    f: chemistry_imported
+    field_label1: Albumin units
+    field_label2: Albumin done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: alb_im_lbstat
+    v: alb_im_lborresu
+-   c: Albumin done?
+    f: chemistry_imported
+    field_label1: Albumin done?
+    field_label2: Creatinine
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: creat_im_lbtest
+    v: alb_im_lbstat
+-   c: Creatinine
+    f: chemistry_imported
+    field_label1: Creatinine
+    field_label2: CREAT
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: creat_im_lbtestcd
+    v: creat_im_lbtest
+-   c: CREAT
+    f: chemistry_imported
+    field_label1: CREAT
+    field_label2: Creatinine
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: creat_im_lborres
+    v: creat_im_lbtestcd
+-   c: Creatinine
+    f: chemistry_imported
+    field_label1: Creatinine
+    field_label2: Creatinine units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: creat_im_lborresu
+    v: creat_im_lborres
+-   c: Creatinine units
+    f: chemistry_imported
+    field_label1: Creatinine units
+    field_label2: Creatinine done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: creat_im_lbstat
+    v: creat_im_lborresu
+-   c: Creatinine done?
+    f: chemistry_imported
+    field_label1: Creatinine done?
+    field_label2: GLUC
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: gluc_im_lbtestcd
+    v: creat_im_lbstat
+-   c: GLUC
+    f: chemistry_imported
+    field_label1: GLUC
+    field_label2: Glucose
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: gluc_im_lbtest
+    v: gluc_im_lbtestcd
+-   c: Glucose
+    f: chemistry_imported
+    field_label1: Glucose
+    field_label2: Glucose
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: gluc_im_lborres
+    v: gluc_im_lbtest
+-   c: Glucose
+    f: chemistry_imported
+    field_label1: Glucose
+    field_label2: Glucose units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: gluc_im_lborresu
+    v: gluc_im_lborres
+-   c: Glucose units
+    f: chemistry_imported
+    field_label1: Glucose units
+    field_label2: Glucose done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: gluc_im_lbstat
+    v: gluc_im_lborresu
+-   c: Glucose done?
+    f: chemistry_imported
+    field_label1: Glucose done?
+    field_label2: K
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: k_im_lbtestcd
+    v: gluc_im_lbstat
+-   c: K
+    f: chemistry_imported
+    field_label1: K
+    field_label2: Potassium
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: k_im_lbtest
+    v: k_im_lbtestcd
+-   c: Potassium
+    f: chemistry_imported
+    field_label1: Potassium
+    field_label2: Potassium
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: k_im_lborres
+    v: k_im_lbtest
+-   c: Potassium
+    f: chemistry_imported
+    field_label1: Potassium
+    field_label2: Potassium units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: k_im_lborresu
+    v: k_im_lborres
+-   c: Potassium units
+    f: chemistry_imported
+    field_label1: Potassium units
+    field_label2: Potassium done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: k_im_lbstat
+    v: k_im_lborresu
+-   c: Potassium done?
+    f: chemistry_imported
+    field_label1: Potassium done?
+    field_label2: SODIUM
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: sodium_im_lbtestcd
+    v: k_im_lbstat
+-   c: SODIUM
+    f: chemistry_imported
+    field_label1: SODIUM
+    field_label2: Sodium
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: sodium_im_lbtest
+    v: sodium_im_lbtestcd
+-   c: Sodium
+    f: chemistry_imported
+    field_label1: Sodium
+    field_label2: Sodium
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: sodium_im_lborres
+    v: sodium_im_lbtest
+-   c: Sodium
+    f: chemistry_imported
+    field_label1: Sodium
+    field_label2: Sodium units
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: sodium_im_lborresu
+    v: sodium_im_lborres
+-   c: Sodium units
+    f: chemistry_imported
+    field_label1: Sodium units
+    field_label2: Sodium done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: sodium_im_lbstat
+    v: sodium_im_lborresu
+-   c: Sodium done?
+    f: chemistry_imported
+    field_label1: Sodium done?
+    field_label2: 'Serum ALT '
+    field_type1: radio
+    field_type2: text
+    l: UNKNOWN
+    u: alt_im_lbstresn
+    v: sodium_im_lbstat
+-   c: Date of test
+    f: inr_imported
+    field_label1: Date of test
+    field_label2: INR
+    field_type1: text
+    field_type2: descriptive
+    l: UNKNOWN
+    u: inr_im_lbtestcd
+    v: inr_im_lbdtc
+-   c: INR
+    f: inr_imported
+    field_label1: INR
+    field_label2: Prothrombin Intl. Normalized Ratio
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: inr_im_lbtest
+    v: inr_im_lbtestcd
+-   c: Prothrombin Intl. Normalized Ratio
+    f: inr_imported
+    field_label1: Prothrombin Intl. Normalized Ratio
+    field_label2: 'INR  '
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: inr_im_lborres
+    v: inr_im_lbtest
+-   c: 'INR  '
+    f: inr_imported
+    field_label1: 'INR  '
+    field_label2: INR done?
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: inr_im_lbstat
+    v: inr_im_lborres
+-   c: INR done?
+    f: inr_imported
+    field_label1: INR done?
+    field_label2: Data trusted?
+    field_type1: radio
+    field_type2: radio
+    l: UNKNOWN
+    u: hcv_im_nxtrust
+    v: inr_im_lbstat
+-   c: Data trusted?
+    f: hcv_rna_imported
+    field_label1: Data trusted?
+    field_label2: HCV Viral Load
+    field_type1: radio
+    field_type2: descriptive
+    l: UNKNOWN
+    u: hcv_im_lbtest
+    v: hcv_im_nxtrust
+-   c: HCV Viral Load
+    f: hcv_rna_imported
+    field_label1: HCV Viral Load
+    field_label2: HCVVLD
+    field_type1: descriptive
+    field_type2: descriptive
+    l: UNKNOWN
+    u: hcv_im_lbtestcd
+    v: hcv_im_lbtest
+-   c: HCVVLD
+    f: hcv_rna_imported
+    field_label1: HCVVLD
+    field_label2: HCV RNA date
+    field_type1: descriptive
+    field_type2: text
+    l: UNKNOWN
+    u: hcv_im_lbdtc
+    v: hcv_im_lbtestcd
+-   c: HCV RNA date
+    f: hcv_rna_imported
+    field_label1: HCV RNA date
+    field_label2: 'Does the report have a quantified HCV RNA result? <br><b><u>(NOTE:
+        If result is indicated as < the quantitative cutoff, the response should be
+        NO.  If a TMA assay or qualitative assay is used, the response should be NO)</b><u>'
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: hcv_im_supplb_hcvquant
+    v: hcv_im_lbdtc
+-   c: 'Does the report have a quantified HCV RNA result? <br><b><u>(NOTE: If result
+        is indicated as < the quantitative cutoff, the response should be NO.  If
+        a TMA assay or qualitative assay is used, the response should be NO)</b><u>'
+    f: hcv_rna_imported
+    field_label1: 'Does the report have a quantified HCV RNA result? <br><b><u>(NOTE:
+        If result is indicated as < the quantitative cutoff, the response should be
+        NO.  If a TMA assay or qualitative assay is used, the response should be NO)</b><u>'
+    field_label2: HCV RNA results
+    field_type1: radio
+    field_type2: text
+    l: UNKNOWN
+    u: hcv_im_lborres
+    v: hcv_im_supplb_hcvquant
+-   c: HCV RNA results
+    f: hcv_rna_imported
+    field_label1: HCV RNA results
+    field_label2: HCV RNA verbatim results
+    field_type1: text
+    field_type2: text
+    l: UNKNOWN
+    u: hcv_im_supplb_vborres
+    v: hcv_im_lborres
+-   c: HCV RNA verbatim results
+    f: hcv_rna_imported
+    field_label1: HCV RNA verbatim results
+    field_label2: HCV RNA lab notes
+    field_type1: text
+    field_type2: notes
+    l: UNKNOWN
+    u: hcv_im_supplb_lbnote
+    v: hcv_im_supplb_vborres
+-   c: HCV RNA lab notes
+    f: hcv_rna_imported
+    field_label1: HCV RNA lab notes
+    field_label2: HCV RNA units
+    field_type1: notes
+    field_type2: text
+    l: UNKNOWN
+    u: hcv_im_lborresu
+    v: hcv_im_supplb_lbnote
+-   c: HCV RNA units
+    f: hcv_rna_imported
+    field_label1: HCV RNA units
+    field_label2: 'Is HCV RNA DETECTABLE? '
+    field_type1: text
+    field_type2: radio
+    l: UNKNOWN
+    u: hcv_im_supplb_hcvdtct
+    v: hcv_im_lborresu
+-   c: 'Is HCV RNA DETECTABLE? '
+    f: hcv_rna_imported
+    field_label1: 'Is HCV RNA DETECTABLE? '
+    field_label2: HCV RNA results
+    field_type1: radio
+    field_type2: text
+    l: UNKNOWN
+    u: hcv_im_lbstresn
+    v: hcv_im_supplb_hcvdtct

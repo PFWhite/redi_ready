@@ -28,6 +28,12 @@ def form_events_render(event_map):
             }
         forms[form_name]['events'].append({'unique_event_name': item['unique_event_name']})
     # end events
+    to_del = []
+    for key in forms:
+        if not ( '_imported' in forms[key]['name'] ):
+            to_del.append(key)
+    for item in to_del:
+        del forms[item]
     return templates['form_events'].render(forms=forms)
 
 
